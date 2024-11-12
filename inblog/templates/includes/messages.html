@@ -1,0 +1,14 @@
+
+{# https://flask.palletsprojects.com/en/2.3.x/patterns/flashing/ adresinden kopyalanmış mesaj gösterme fonk. #} 
+
+{% with messages = get_flashed_messages(with_categories=true) %} {# buradaki with while döngüsüne benziyor. #}
+  {% if messages %} {# mesaj varsa ? #}
+    {% for category, message in messages %} {# mesajlar içinde category ve message gezinecek #}
+    <div class="alert alert-{{category}}"role="alert">{# güzel olsun diye category'ye göre bootstrap class'ı #}
+    {{message}} {# yazılacak mesaj #}
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+

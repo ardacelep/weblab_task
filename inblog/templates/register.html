@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {# layout dosyasını tekrar kullandık. #}
+
+{% block body %} {# içindekini dosyamızın kendi içeriğiyle değiştirmek için body bloğunu açtık. #}
+
+{% from "includes/formhelpers.html" import render_field %} {# oluşturduğumuz makro'yu import ettik. #}
+
+<h3 style="text-align:center">Kayıt Olun</h3> <hr>
+
+{# post req metodunda bir form oluşturduk ve içinde py dosyasından gönderdiğimiz form objesini render'ladık #}
+{# bu işlemi import ettiğimiz render_field makrosu sayesinde yaptık. #}
+<form method="post"> 
+    {{ render_field(form.name,class = "form-control") }}
+    {{ render_field(form.username,class = "form-control") }}
+    {{ render_field(form.email,class = "form-control") }}
+    {{ render_field(form.password,class = "form-control") }}
+    {{ render_field(form.confirm,class = "form-control") }}
+    <button type="submit" class="btn btn-primary">Kayıt Ol</button> 
+</form>
+
+{# en sona submit butonu koyduk, bu butona basılınca post request gerçekleşecek ve form objesi gönderilecek #}
+
+{% endblock body %}

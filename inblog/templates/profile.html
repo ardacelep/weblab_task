@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h4 style="text-align:center">{{user.name}}</h4>
+<p style="text-align:center"><small><em>'<span id="underlinehover">{{user.username}}</span>'</em></small></p> <hr><br>
+
+<h4 style="margin-top:10px;margin-bottom:30px">Makaleler</h4><hr>
+
+{% if articles %} {# makale bilgisi varsa; #}
+
+<div class="list-group">
+
+    {% for article in articles %} <!-- gönderdiğimiz makaleler üstünde geziniyoruz. -->
+    
+    <!-- burayı önceden kullanıyoduk ama daha iyi bir tasarıma geçtik. -->
+    <!--<a href="#" class="d-flex w-100 justify-content-between list-group-item list-group-item-action">{{article.title}} <small>{{article.author}}</small></a>-->
+
+    <!-- interaktif list grouping için bootstrap'ten alınmış kodlar. -->
+    <a href="article/{{article.id}}" class="list-group-item list-group-item-action flex-column align-items-start" style="border-radius:5px">
+
+      <!-- içindeki ilk elemanın sağa diğerinin sola yaslanması içi kullandık. -->
+        <div class="d-flex w-100 justify-content-between"> 
+          <h5 class="mb-1" title="Makale Başlığı">{{article.title}}</h5> <!-- makalenin başlığı, sola yaslanmış -->
+
+          <!-- makalenin tarihi, sağa yaslanmış. -->
+          <small class="text-muted" title="Makale Oluşturulma Tarihi">{{article.created_date.day}} {{article.created_date.strftime("%B")}} {{article.created_date.year}}</small>
+        </div>
+
+        <!-- makale uzunluğuna göre önizlemede tamamını gösteren ya da 150 karakterden sonrasını ... koyan if -->
+        {% if article.length > 150 %} 
+
+        <!-- 
+        burada '| safe' flask'a içeriğin güvenli olduğunu ve render'lamasını söylüyor, yoksa render'lamaz.
+        -->
+        <p class="mb-1">{{article.content[:150] | safe}}...</p> 
+        {% else %}
+        <p class="mb-1">{{article.content | safe}}</p>
+        {% endif %}
+        
+        <div class="d-flex w-100 justify-content-between"> <!-- yine sağa sola yaslamak için div açtık. -->
+        <small class="text-muted" title="{{article.id}} Numaralı Makale">#{{article.id}}</small> <!-- sola makale id'sini yasladık -->
+        <small class="text-muted" title="Makale Yazarı">{{article.author}}</small> <!-- yazarı sağa yasladık. -->
+        
+        </div>
+      </a>
+      <br>
+    
+    {% endfor %}
+
+</div>
+
+{% else %} {# makale bilgisi yoksa; #}
+<br><br>
+<h6 style="text-align:center;margin-top:40px">{{user.username}} henüz bir makale yüklememiş...</h5>
+{% endif %}
+
+{% endblock body %}
+
+

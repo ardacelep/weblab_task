@@ -1,0 +1,48 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- logo eklenmesi (çok uğraştım bunun için 1 saatten fazla sürmüş olabilir) -->
+    <a href="/"><img src="{{url_for('static',filename='yildizlogo.png')}}" alt="yıldız logo" style="height:30px;margin-right:7px"></a>
+    <a class="navbar-brand" href="/">Yıldız Blog</a><!-- tekrar anasayfaya döndürsün diye / koyduk (kök dizin) -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto"> <!-- ul sınıfın mr (margin right) auto içindekileri sola yaslar. -->
+                                      <!-- yeni ul açıp sınıfı ml (margin left) auto yaparak sağa yaslayalım. -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/about">Hakkımızda</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/articles">Makaleler</a>
+        </li>
+  
+      </ul>
+
+      <ul class="navbar-nav ml-auto"> <!-- ul sınıfın mr (margin right) auto içindekileri sola yaslar. -->
+          <!-- yeni ul açıp sınıfı ml (margin left) auto yaparak sağa yaslayalım. -->
+        {% if session["logged_in"] %}<!-- kullanıcı girişi yapılmış ve oturum açılmışsa gösterilecek butonlar. -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/dashboard" id="underlinehover">Kontrol Paneli</a>
+        </li>   
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/logout" id="underlinehover">Çıkış Yap</a>
+          </li>   
+        
+        {% else %} <!-- giriş yapılmamış ve oturum açılmamışsa gösterilecek butonlar. -->
+        <li class="nav-item active">
+          <a class="nav-link" href="/login" id="underlinehover">Giriş Yap</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/register" id="underlinehover">Kayıt Ol</a>
+        </li>
+
+        {% endif %}   
+        
+        
+      </ul>
+      
+    </div>
+</nav>
+
+<!-- Kopyalanmış navbar kodu. -->

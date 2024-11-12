@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<h3 style="text-align:center">Kontrol Paneli</h3>
+<p style="text-align:center"><small>Hoşgeldin, <a href="/profile/{{session["username"]}}" style="color:black;">{{session["username"]}}</a>!</small></p>
+<hr>
+<h4 style="margin-top:10px;margin-bottom:30px">Makaleler</h4>
+
+
+{% if articles %}
+
+<table class="table table-hover"> <!-- bootstrap'ten alınmış tablo yapısı. -->
+    <thead>
+      <tr>
+        <!-- tablehead'ler -->
+        <th scope="col">#</th> 
+        <th scope="col">Başlık</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Tarih</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {% for article in articles %} <!-- makaleler üstünde geziniyoruz. -->
+        <tr>
+            <th scope="row">{{article.id}}</th> <!-- ilk sütuna makale id'si. -->
+            <td><a href="/article/{{article.id}}" style="color:black">{{article.title}}</a></td> <!-- başlığı -->
+            <td><a href="/profile/{{article.author}}" style="color:black;">{{article.author}}</a></td> <!-- yazarı -->
+            <!-- tarihi -->
+            <td><small>{{article.created_date.day}} {{article.created_date.strftime("%B")}} {{article.created_date.year}}</small></td>
+            <td><a href="/edit/{{article.id}}" class="btn btn-primary">Düzenle</a></td> <!-- düzenle butonu -->
+            <td><a href="/delete/{{article.id}}" class="btn btn-danger">Sil</a></td> <!-- sil butonu -->
+        </tr>
+        
+        {% endfor %}
+      
+    </tbody>
+  </table>
+
+{% else %}
+<!-- makale yoksa 'makale bulunmuyor' mesajı -->
+<div class="alert alert-danger">Henüz bir makaleniz bulunmuyor...</div>
+{% endif %}
+<br><br>
+<div class="d-flex w-100 justify-content-between"> <!-- sağa sola yaslamak için div -->
+    <div></div> <!-- sol tarafı boş bırakmak için boş div -->
+    <a href="/addarticle" class="btn btn-info">Makale Ekle</a> <!-- sağ tarafa yaslanacak buton -->
+</div>
+
+{% endblock body %}
+
+

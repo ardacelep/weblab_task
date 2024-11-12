@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h3 style="text-align:center">Makaleyi Düzenle</h3><hr>
+
+
+{# önceden hazırladığımız render fonksiyonunu dahil ettik. #}
+{% from "includes/formhelpers.html" import render_field %} 
+
+<form method="post"> 
+    {{ render_field(form.title) }} {# form alanlarımızı render'ladık. #}
+    {{ render_field(form.content) }}
+    
+    <div class="d-flex w-100 justify-content-between"> <!-- bilgileri yaslamak için div. -->
+
+         <!-- sol tarafa yaslanacak makale id. -->
+        <small class="text-muted" title="{{article.id}} Numaralı Makale">#{{article.id}}</small>
+
+        <!-- ortada bırakılacak yazar. -->
+        <small class="text-muted" title="Makale Yazarı">{{article.author}}</small> 
+
+        <!-- sağa yaslanacak tarih. -->
+        <small class="text-muted" title="Makale Yazılma Tarihi">{{article.created_date.day}} {{article.created_date.strftime("%B")}} {{article.created_date.year}}</small>
+    </div>
+    <br>
+    <div class="d-flex w-100 justify-content-between"> <!-- butonu sağa yaslamak için div. -->
+        <div></div> <!-- sol tarafı boş bırakmak için sola yaslanan boş div. -->
+        <button type="submit" class="btn btn-info">Güncelle</button> <!-- sağa yaslanacak buton. -->
+
+    </div>
+</form>
+<br><br>
+
+
+{% endblock body %}
+
+

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+<h4 style="text-align:center">{{article.title}}</h4><hr> <!-- makale başlığı -->
+{{article.content|safe}} <!-- makale içeriği html kodu formatında kayıtlı, renderlamak için | safe koyulmalı. --> <br>
+<div class="d-flex w-100 justify-content-between"> <!-- elemanlarını sola, ortaya ve sağ koymak için div -->
+<small class="text-muted" title="{{article.id}} Numaralı Makale">#{{article.id}}</small><!-- sola makale id'si -->
+<a href="/profile/{{article.author}}"><small class="text-muted" title="Makale Yazarı">{{article.author}}</small></a> <!-- ortaya yazarı -->   
+<small class="text-muted" title="Makale Yazılma Tarihi">{{article.created_date.day}} {{article.created_date.strftime("%B")}} {{article.created_date.year}}</small>   
+<!-- sağa tarihi -->
+</div>
+<br><br>
+{% endblock body %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {# layout dosyasının içeriğinin dahil edilmesi #}
+
+
+{% block body %}
+
+{# layout'ta sonradan değiştirilmek için içi boş bırakılan bloğun doldurulması. #}
+
+<div class="jumbotron text-center"> {# tasarım için bootstrap sınıfı kullanılarak yazı yazılması. #}
+    <h3>Böyle bir makale bulunmuyor...</h3><br>
+    <p>{{id}} numarasına sahip bir makale bulunmuyor,<br>Makale numarasını kontrol edin.</p>
+    <!-- geçersiz makale id'leri için makale bulunamadı sayfası. -->
+    
+</div>
+
+
+{% endblock body %}

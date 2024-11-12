@@ -1,0 +1,16 @@
+{% extends "layout.html" %} {# layout dosyasının içeriğinin dahil edilmesi #}
+
+
+{% block body %}
+
+{# layout'ta sonradan değiştirilmek için içi boş bırakılan bloğun doldurulması. #}
+
+<div class="jumbotron text-center"> {# tasarım için bootstrap sınıfı kullanılarak yazı yazılması. #}
+    <h3>Böyle bir kullanıcı bulunmuyor...</h3><br>
+    <p>{{username}} adına sahip bir kullanıcı bulunmuyor,<br>Kullanıcı adını kontrol edin.</p>
+    <!-- geçersiz kullanıcı adları için kullanıcı bulunamadı sayfası. -->
+    
+</div>
+
+
+{% endblock body %}

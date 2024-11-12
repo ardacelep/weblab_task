@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yıldız Blog</title>
+
+        <!-- Stylesheet eklenmesi. -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    
+        <style>
+            /* Yazıların üstüne gelince altının çizilmesi için css */
+            #underlinehover:hover{
+                text-decoration: underline;
+            }
+
+        </style>
+
+    </head>
+    
+    <body>
+        
+        <!-- navbar dosyasındaki hazır navigation bar'ın dahil edilmesi. -->
+        {% include "includes/navbar.html" %}
+        <br><br><br>
+        <div class = "container"> <!-- İçeriğinin ortalanması için CSS sınıfıyla div oluşturulması. -->
+
+            {% include "includes/messages.html" %} <!-- Mesaj kutusunu dahil ettik. -->
+            {% block body %}
+                                 <!-- Sayfa özeline göre sonradan doldurulması için boş blok açılması. -->
+            {% endblock body %}
+
+        </div>
+
+      
+        <!-- İnteraktif site için kodların eklenmesi. -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+        <!-- Makale ekleme kısmında içeriği yazdığımız yeri güzelce düzenleyebilmek için CKEDITOR ekledik. -->
+        <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+        <script>
+            CKEDITOR.replace( 'content' , { /* ckeditor'un yerine geçeceği textarea'nın id'sini verdik. */
+                versionCheck: false}); /* ücretsiz olduğu için eski versiyonu kullanıyoruz ancak ekranda 
+                                          uyarı çıkıyor, bunu engellemek için versionCheck'i kapattık. */
+        </script>
+
+    </body>
+</html>
+
+

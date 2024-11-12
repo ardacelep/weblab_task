@@ -1,0 +1,21 @@
+
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3 style="text-align:center">Giriş Yapın</h3><hr>
+
+{# önceden hazırladığımız render fonksiyonunu dahil ettik. #}
+{% from "includes/formhelpers.html" import render_field %} 
+
+{# form submit'lenince post request yapacak bu yüzden metodu post yaptık. #}
+<form method="post"> 
+    {{ render_field(form.username) }} {# form alanlarımızı render'ladık. #}
+    {{ render_field(form.password) }}
+    
+    <button type="submit" class="btn btn-primary">Giriş Yap</button> 
+</form>
+
+{% endblock body %}
+
+
