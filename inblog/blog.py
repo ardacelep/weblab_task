@@ -439,5 +439,3 @@ if __name__ == "__main__": # eğer sayfa terminalden çalıştırılırsa __name
     app.run(debug=True) # Geliştirirken debug modunu açmak işimizi kolaylaştıracaktır.
 
 
-
-
